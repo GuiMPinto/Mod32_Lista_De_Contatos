@@ -1,23 +1,23 @@
 import * as enums from '../utils/enums/enumTarefas'
 
 class tarefaModels {
-  tituloModels: string
+  nomeModels: string
   prioridadeModels: enums.Prioridade
   statusModels: enums.Status
-  descricaoModels: string
+  emailModels: string
   idModels: number
 
   constructor(
-    tituloModels: string,
+    nomeModels: string,
     prioridadeModels: enums.Prioridade,
     statusModels: enums.Status,
-    descricaoModels: string,
+    emailModels: string,
     idModels: number
   ) {
-    this.tituloModels = tituloModels
+    this.nomeModels = nomeModels
     this.prioridadeModels = prioridadeModels
     this.statusModels = statusModels
-    this.descricaoModels = descricaoModels
+    this.emailModels = emailModels
     this.idModels = idModels
   }
 }

@@ -18,24 +18,24 @@ const initialState: TarefaState = {
   itens: [
     {
       idModels: 1,
-      descricaoModels: 'guipinto@admim.com',
+      emailModels: 'guipinto@admim.com',
       prioridadeModels: enums.Prioridade.NORMAL,
       statusModels: enums.Status.CONCLUIDA,
-      tituloModels: 'Guilherme Pinto'
+      nomeModels: 'Guilherme Pinto'
     },
     {
       idModels: 2,
-      descricaoModels: 'mulhermaravilha@dc.com',
+      emailModels: 'mulhermaravilha@dc.com',
       prioridadeModels: enums.Prioridade.IMPORTANTE,
       statusModels: enums.Status.CONCLUIDA,
-      tituloModels: 'Diana de Themísera'
+      nomeModels: 'Diana de Themísera'
     },
     {
       idModels: 3,
-      descricaoModels: 'mulhergato@dc.com',
+      emailModels: 'mulhergato@dc.com',
       prioridadeModels: enums.Prioridade.URGENTE,
       statusModels: enums.Status.PENDENTE,
-      tituloModels: 'Selina kaiu'
+      nomeModels: 'Selina kaiu'
     }
   ]
 }
@@ -69,8 +69,8 @@ const tarefasSlice = createSlice({
     cadastrar: (state, action: PayloadAction<tarefaModels>) => {
       const tarefaJaExiste = state.itens.find(
         (tarefa) =>
-          tarefa.tituloModels.toLowerCase() ===
-          action.payload.tituloModels.toLowerCase()
+          tarefa.nomeModels.toLowerCase() ===
+          action.payload.nomeModels.toLowerCase()
       )
       if (tarefaJaExiste) {
         alert('Já existe uma tarefa com esse nome')

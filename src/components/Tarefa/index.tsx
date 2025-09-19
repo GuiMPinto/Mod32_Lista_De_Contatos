@@ -12,10 +12,10 @@ import { BotaoSalvar } from '../../styles'
 
 type PropsTarefas = tarefaModels
 const Tarefa = ({
-  tituloModels,
+  nomeModels,
   prioridadeModels,
   statusModels,
-  descricaoModels: descricaoOriginal,
+  emailModels,
   idModels
 }: PropsTarefas) => {
   const dispatch = useDispatch() // HOOK que altera a ACTION
@@ -23,22 +23,50 @@ const Tarefa = ({
   /* O uso de USESTATE é feito com 2 parâmetros o 'valor' e a 'função que configura este valor' */
   const [estaEditando, setEstaEditando] = useState(false)
   const [descricao, setDescricao] = useState(' ')
+  const [nome, mudarNome] = useState(' ')
 
   /*o USE EFFECT dispara uma função apenas na condição do If */
   useEffect(() => {
-    if (descricaoOriginal.length > 0) {
-      setDescricao(descricaoOriginal)
+    if (emailModels.length > 0) {
+      setDescricao(emailModels)
     }
-  }, [descricaoOriginal])
+    if (nomeModels.length > 0) {
+      mudarNome(nomeModels)
+    }
+  }, [emailModels, nomeModels])
 
   function cancelerEdicao() {
     setEstaEditando(false)
-    setDescricao(descricaoOriginal)
+    setDescricao(emailModels)
+    mudarNome(nomeModels)
   }
 
   return (
     <S.Card>
-      <S.Titulo>{tituloModels}</S.Titulo>
+      <S.Titulo>NOME </S.Titulo>
+      {/* Equivalente ao <textarea ></textarea> */}
+      <S.Descricao
+        disabled={!estaEditando}
+        value={nome}
+        onChange={(evento) => mudarNome(evento.target.value)}
+      />
+
+      <S.Titulo>E-MAIL </S.Titulo>
+      {/* Equivalente ao <textarea ></textarea> */}
+      <S.Descricao
+        disabled={!estaEditando}
+        value={descricao}
+        onChange={(evento) => setDescricao(evento.target.value)}
+      />
+
+      <S.Titulo>TELEFONE </S.Titulo>
+      {/* Equivalente ao <textarea ></textarea> */}
+      <S.Descricao
+        disabled={!estaEditando}
+        value={nome}
+        onChange={(evento) => mudarNome(evento.target.value)}
+      />
+      <S.Nome>{nomeModels}</S.Nome>
       <S.Tag parametro="prioridade" prioridadeTagProps={prioridadeModels}>
         {prioridadeModels}
       </S.Tag>
@@ -51,6 +79,12 @@ const Tarefa = ({
         value={descricao}
         onChange={(evento) => setDescricao(evento.target.value)}
       />
+
+      <S.Descricao
+        disabled={!estaEditando}
+        value={descricao}
+        onChange={(evento) => setDescricao(evento.target.value)}
+      />
       <S.BarraAcao>
         {estaEditando ? (
           <>
@@ -58,10 +92,10 @@ const Tarefa = ({
               onClick={() => {
                 dispatch(
                   editar({
-                    tituloModels,
+                    nomeModels,
                     prioridadeModels,
                     statusModels,
-                    descricaoModels: descricaoOriginal,
+                    emailModels,
                     idModels
                   })
                 )

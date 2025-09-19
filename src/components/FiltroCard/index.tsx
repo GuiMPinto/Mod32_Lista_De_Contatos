@@ -3,7 +3,7 @@ import * as S from './styles'
 import { alteraFiltro } from '../../store/reducers/filtroReducers'
 import * as enums from '../../utils/enums/enumTarefas'
 import { RootReducer } from '../../store'
-import tarefaModels from '../../models/tarefaModels'
+//import tarefaModels from '../../models/tarefaModels'
 
 // Criado o tipo 'PropsFiltroTarefas'
 export type PropsFiltroTarefas = {

@@ -30,10 +30,15 @@ export const Card = styled.div`
   border-radius: 16px;
 `
 
-export const Titulo = styled.h3`
-  font-size: 18px;
+export const Nome = styled.h3`
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 16px;
+`
+export const Titulo = styled.h2`
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
 `
 
 export const Tag = styled.span<TagProps>`
@@ -52,10 +57,10 @@ export const Descricao = styled.textarea`
   font-size: 14px;
   line-height: 24px;
   font-family: 'Roboto Mono', monospace;
-  display: block;
+  display: inline-block;
   width: 100%;
   margin-bottom: 16px;
-  margin-top: 16px;
+  margin-top: 8px;
   resize: none;
   border: none;
   background-color: transparent;

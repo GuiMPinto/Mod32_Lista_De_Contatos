@@ -19,8 +19,7 @@ const ListaTarefas = () => {
     //termo !== undefined . Evita de ter o valor falso se a string estiver vazia
     if (termo !== undefined) {
       tarefasFiltradas = tarefasFiltradas.filter(
-        (item) =>
-          item.tituloModels.toLowerCase().search(termo.toLowerCase()) >= 0
+        (item) => item.nomeModels.toLowerCase().search(termo.toLowerCase()) >= 0
       )
 
       if (criterio === 'prioridade') {
@@ -64,10 +63,10 @@ const ListaTarefas = () => {
         {
           tarefasExibidas.map(
             (t) => (
-              <li key={t.tituloModels}>
+              <li key={t.nomeModels}>
                 <Tarefa
-                  descricaoModels={t.descricaoModels}
-                  tituloModels={t.tituloModels}
+                  emailModels={t.emailModels}
+                  nomeModels={t.nomeModels}
                   statusModels={t.statusModels}
                   prioridadeModels={t.prioridadeModels}
                   idModels={t.idModels}
