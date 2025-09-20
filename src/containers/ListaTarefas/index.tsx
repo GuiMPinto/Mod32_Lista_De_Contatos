@@ -22,18 +22,6 @@ const ListaTarefas = () => {
         (item) => item.nomeModels.toLowerCase().search(termo.toLowerCase()) >= 0
       )
 
-      if (criterio === 'prioridade') {
-        tarefasFiltradas = tarefasFiltradas.filter(
-          (item) => item.prioridadeModels === valor
-        )
-      }
-
-      if (criterio === 'status') {
-        tarefasFiltradas = tarefasFiltradas.filter(
-          (item) => item.statusModels === valor
-        )
-      }
-
       return tarefasFiltradas
     } else {
       return itens
@@ -47,9 +35,9 @@ const ListaTarefas = () => {
       termo !== undefined && termo.length > 0 ? `e "${termo}"` : ''
 
     if (criterio === 'todas') {
-      mensagem = `${quantidade} tarefa(s) encontrada(s) como: todas ${complementacao}`
+      mensagem = `${quantidade} Contato(s) ${complementacao}`
     } else {
-      mensagem = `${quantidade} tarefa(s) encontrada(s) como: ${`${criterio}=${valor}`}" ${complementacao}`
+      mensagem = `${quantidade} Contato(s) ${complementacao}`
     }
     return mensagem
   }
@@ -67,8 +55,7 @@ const ListaTarefas = () => {
                 <Tarefa
                   emailModels={t.emailModels}
                   nomeModels={t.nomeModels}
-                  statusModels={t.statusModels}
-                  prioridadeModels={t.prioridadeModels}
+                  numeroModels={t.numeroModels}
                   idModels={t.idModels}
                 />
               </li>

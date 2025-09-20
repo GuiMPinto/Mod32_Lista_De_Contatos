@@ -27,15 +27,6 @@ const FiltroCard = ({ legenda, criterio, valor }: PropsFiltroTarefas) => {
 
   const contarTarefa = () => {
     if (criterio === 'todas') return tarefasReducers.itens.length
-    if (criterio === 'prioridade') {
-      return tarefasReducers.itens.filter(
-        (item) => item.prioridadeModels === valor
-      ).length
-    }
-    if (criterio === 'status') {
-      return tarefasReducers.itens.filter((item) => item.statusModels === valor)
-        .length
-    }
   }
   const ativo = verificarEstadoAtivo()
   const contador = contarTarefa()

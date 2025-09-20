@@ -13,9 +13,8 @@ import { BotaoSalvar } from '../../styles'
 type PropsTarefas = tarefaModels
 const Tarefa = ({
   nomeModels,
-  prioridadeModels,
-  statusModels,
   emailModels,
+  numeroModels,
   idModels
 }: PropsTarefas) => {
   const dispatch = useDispatch() // HOOK que altera a ACTION
@@ -24,6 +23,7 @@ const Tarefa = ({
   const [estaEditando, setEstaEditando] = useState(false)
   const [descricao, setDescricao] = useState(' ')
   const [nome, mudarNome] = useState(' ')
+  const [numeroTelefone, mudarNumero] = useState(' ')
 
   /*o USE EFFECT dispara uma função apenas na condição do If */
   useEffect(() => {
@@ -33,7 +33,10 @@ const Tarefa = ({
     if (nomeModels.length > 0) {
       mudarNome(nomeModels)
     }
-  }, [emailModels, nomeModels])
+    if (nomeModels.length > 0) {
+      mudarNumero(numeroModels)
+    }
+  }, [emailModels, nomeModels, numeroModels])
 
   function cancelerEdicao() {
     setEstaEditando(false)
@@ -63,28 +66,10 @@ const Tarefa = ({
       {/* Equivalente ao <textarea ></textarea> */}
       <S.Descricao
         disabled={!estaEditando}
-        value={nome}
-        onChange={(evento) => mudarNome(evento.target.value)}
-      />
-      <S.Nome>{nomeModels}</S.Nome>
-      <S.Tag parametro="prioridade" prioridadeTagProps={prioridadeModels}>
-        {prioridadeModels}
-      </S.Tag>
-      <S.Tag parametro="status" statusTagProps={statusModels}>
-        {statusModels}
-      </S.Tag>
-      {/* Equivalente ao <textarea ></textarea> */}
-      <S.Descricao
-        disabled={!estaEditando}
-        value={descricao}
-        onChange={(evento) => setDescricao(evento.target.value)}
+        value={numeroTelefone}
+        onChange={(evento) => mudarNumero(evento.target.value)}
       />
 
-      <S.Descricao
-        disabled={!estaEditando}
-        value={descricao}
-        onChange={(evento) => setDescricao(evento.target.value)}
-      />
       <S.BarraAcao>
         {estaEditando ? (
           <>
@@ -93,9 +78,9 @@ const Tarefa = ({
                 dispatch(
                   editar({
                     nomeModels,
-                    prioridadeModels,
-                    statusModels,
+
                     emailModels,
+                    numeroModels,
                     idModels
                   })
                 )

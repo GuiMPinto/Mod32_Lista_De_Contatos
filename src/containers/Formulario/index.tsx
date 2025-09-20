@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { BotaoSalvar, MainContainer, Titulo } from '../../styles'
 import { Campo } from '../../styles'
-import { Form, Opcoes, Opcao } from './styles'
+import { Form } from './styles'
 import * as enums from '../../utils/enums/enumTarefas'
 import Tarefa from '../../models/tarefaModels'
 import { cadastrar } from '../../store/reducers/tarefasReducers'
@@ -13,16 +13,10 @@ const Formulario = () => {
   const navigate = useNavigate()
   const [titulo, setTitulo] = useState('')
   const [descricao, setDescricao] = useState('')
-  const [prioridade, setPrioridade] = useState(enums.Prioridade.NORMAL)
+  const [numeroTelefone, mudarNumero] = useState('')
   const cadastrarTarefa = (evento: FormEvent) => {
     evento.preventDefault()
-    const tarefaParaAdicionar = new Tarefa(
-      titulo,
-      prioridade,
-      enums.Status.PENDENTE,
-      descricao,
-      9
-    )
+    const tarefaParaAdicionar = new Tarefa(titulo, descricao, numeroTelefone, 9)
 
     dispatch(cadastrar(tarefaParaAdicionar))
     navigate('/')
@@ -30,7 +24,7 @@ const Formulario = () => {
 
   return (
     <MainContainer>
-      <Titulo>Nova tarefa</Titulo>
+      <Titulo>Novo Contato</Titulo>
       <Form onSubmit={cadastrarTarefa}>
         <Campo
           value={titulo}
@@ -44,24 +38,13 @@ const Formulario = () => {
           as="textarea"
           placeholder="Descrição da tarefa"
         />
-        <Opcoes>
-          <p>Prioridade</p>
-          {Object.values(enums.Prioridade).map((prioridade) => (
-            <Opcao key={prioridade}>
-              <input
-                value={prioridade}
-                name="prioridade"
-                type="radio"
-                onChange={(evento) =>
-                  setPrioridade(evento.target.value as enums.Prioridade)
-                }
-                id={prioridade}
-                defaultChecked={prioridade === enums.Prioridade.NORMAL}
-              />{' '}
-              <label htmlFor={prioridade}>{prioridade}</label>
-            </Opcao>
-          ))}
-        </Opcoes>
+        <Campo
+          value={numeroTelefone}
+          onChange={({ target }) => mudarNumero(target.value)}
+          as="textarea"
+          placeholder="Numero"
+        />
+
         <BotaoSalvar type="submit">Cadastrar</BotaoSalvar>
       </Form>
     </MainContainer>

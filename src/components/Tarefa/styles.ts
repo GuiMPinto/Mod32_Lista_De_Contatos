@@ -33,7 +33,7 @@ export const Card = styled.div`
 export const Nome = styled.h3`
   font-size: 16px;
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: 2px;
 `
 export const Titulo = styled.h2`
   font-size: 18px;
@@ -59,8 +59,8 @@ export const Descricao = styled.textarea`
   font-family: 'Roboto Mono', monospace;
   display: inline-block;
   width: 100%;
-  margin-bottom: 16px;
-  margin-top: 8px;
+  margin-bottom: 0px;
+  margin-top: 0px;
   resize: none;
   border: none;
   background-color: transparent;

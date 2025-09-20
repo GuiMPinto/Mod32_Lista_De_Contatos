@@ -8,7 +8,6 @@ Dizemos que o usuário fez um 'dispatcher' */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import tarefaModels from '../../models/tarefaModels'
-import * as enums from '../../utils/enums/enumTarefas'
 
 type TarefaState = {
   itens: tarefaModels[]
@@ -19,22 +18,19 @@ const initialState: TarefaState = {
     {
       idModels: 1,
       emailModels: 'guipinto@admim.com',
-      prioridadeModels: enums.Prioridade.NORMAL,
-      statusModels: enums.Status.CONCLUIDA,
+      numeroModels: '3197888811',
       nomeModels: 'Guilherme Pinto'
     },
     {
       idModels: 2,
       emailModels: 'mulhermaravilha@dc.com',
-      prioridadeModels: enums.Prioridade.IMPORTANTE,
-      statusModels: enums.Status.CONCLUIDA,
+      numeroModels: '3197888821',
       nomeModels: 'Diana de Themísera'
     },
     {
       idModels: 3,
       emailModels: 'mulhergato@dc.com',
-      prioridadeModels: enums.Prioridade.URGENTE,
-      statusModels: enums.Status.PENDENTE,
+      numeroModels: '3197888411',
       nomeModels: 'Selina kaiu'
     }
   ]
